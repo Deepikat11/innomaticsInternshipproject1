@@ -138,12 +138,23 @@
             }
             .slides{
                 display: flex;
-                transition: transform 0.5s ease-in-out;
+                /* transition: transform 0.5s ease-in-out;  */
                 width: 100%;
-                animation: slide 21s infinite;    
+                animation: autoSlide 21s infinite steps(1);
+                 
+            }
+            @keyframes autoSlide {
+                0% { transform: translateX(0%); }
+                14.285% { transform: translateX(-100%); } 
+                28.571% { transform: translateX(-200%); }
+                42.857% { transform: translateX(-300%); }
+                57.143% { transform: translateX(-400%); }
+                71.429% { transform: translateX(-500%); }
+                85.715% { transform: translateX(-600%); }
+                100% { transform: translateX(0%); } /* Loop back to first image */
             }
 
-            @keyframes slide {
+             /* @keyframes slide {
                 0% { transform: translateX(0%); }
                 14.285% { transform: translateX(0%); } 
                 14.286% { transform: translateX(-100%); }
@@ -158,7 +169,7 @@
                 85.715% { transform: translateX(-500%); }
                 85.716% { transform: translateX(-600%); }
                 100% { transform: translateX(-600%); } 
-            }
+            }  */
             .slideimg{
                 min-width: 100%;
             }
@@ -169,13 +180,20 @@
             input[type="radio"]{
                 display: none;
             }
+            #slide1:checked ~ .slides { transform: translateX(0%); }
+            #slide2:checked ~ .slides { transform: translateX(-100%); }
+            #slide3:checked ~ .slides { transform: translateX(-200%); }
+            #slide4:checked ~ .slides { transform: translateX(-300%); }
+            #slide5:checked ~ .slides { transform: translateX(-400%); }
+            #slide6:checked ~ .slides { transform: translateX(-500%); }
+            #slide7:checked ~ .slides { transform: translateX(-600%); }
             .nav-buttons{
                 position: absolute;
                 top: 90%;
                 width: 100%;
                 display: flex;
                 justify-content: center;
-                transform: translateY(-50%);
+                /* transform: translateY(-50%); */
             }
             .nav-button{
                 background-color:gainsboro ;
@@ -191,10 +209,17 @@
                 align-items: center;
                 justify-content: center;
             }
-            .nav-button:before {
-                content: '•'; /* Unicode for bullet */
-                font-size: 20px; /* Size of the bullet */
+            #slide1:checked ~ .nav-buttons label[for="slide1"],
+            #slide2:checked ~ .nav-buttons label[for="slide2"],
+            #slide3:checked ~ .nav-buttons label[for="slide3"],
+            #slide4:checked ~ .nav-buttons label[for="slide4"],
+            #slide5:checked ~ .nav-buttons label[for="slide5"],
+            #slide6:checked ~ .nav-buttons label[for="slide6"],
+            #slide7:checked ~ .nav-buttons label[for="slide7"] {
+                background-color: red;
             }
+
+            
             .content{
                 /* display: flex;
                 flex-direction: column;
@@ -214,13 +239,27 @@
                 justify-content: center;
                 gap: 20px;
                 max-width: 100%;
-                padding: 20px;
+                margin: 40px;
+                padding: 40px;
                 flex-wrap: wrap; 
                 padding: 0px;
+            }
+            .contentimg button{
+                background-color: red;
+                color: white;
+                padding: 10px;
+                border-radius: 8px;
+                border: none;
+                font-size: larger;
             }
             .imgcontent{
                 width: 45%;
                 margin-top: 0px;
+                margin-left: 40px;
+            }
+            .imgcontent h1{
+                font-size: xx-large;
+                pad: 0px;
             }
             /* .imgcontent img{
                 width: 100%;
@@ -249,18 +288,34 @@
             }
             .top{
                 display: flex;
+                padding: 10px;
+
             }
             .bottom{
                 display: flex;
+                padding: 10px;
             }
             .t1,.t2{
                 border: gainsboro solid 2px;
-                padding: 20px;
+                padding: 70px;
                 border-radius: 10px;
+                
+            }
+            .t1:hover{
+                border-bottom: red 3px solid;
+            }
+            .t2:hover{
+                border-bottom: red 3px solid;
+            }
+            .t3:hover{
+                border-bottom: red 3px solid;
+            }
+            .t4:hover{
+                border-bottom: red 3px solid;
             }
             .t3{
                 border: gainsboro solid 2px;
-                padding: 11px;
+                padding: 60px;
                 border-radius: 10px;
             }
             .t1,.t3{
@@ -273,10 +328,12 @@
                 margin-right: 10px;
                 margin-bottom: 20px;
             }
+            
             .symbol{
-                width: 20px;
-                height: 20px;
-                font-size: 60px;
+                width: 80px;
+                height: 80px;
+                font-size: 80px;
+                margin-left: 40px;
                 color: red !important;
                 display: block;
                 /* align-items: center;
@@ -290,6 +347,7 @@
                 align-items: center;
                 justify-content: center; */
                 text-align: center;
+                font-size: 22px;
     
             }
             .wwa{
@@ -322,6 +380,7 @@
                 background-color:black;
                 border-color: white;
                 padding: 10px;
+                margin-bottom: 20px;
 
             }
             .bb1 p,.bb2 p,.bb3 p{
@@ -330,10 +389,12 @@
             .bb1 h1,.bb2 h1,.bb3 h1{
                 margin: 30px;
             }
+            
             .bimage{
                 margin-top: 0px;
                 margin-left: 0px;
                 object-fit: contain;
+
             }
             .Main{
                 display: flex;
@@ -648,15 +709,17 @@
     </head>
     <body>
         <header>
-            <nav class="main">
+            <nav>
+            <div class="main">
                 <div class="a"><a class="a1">Enquire Now:</a></div>
                 <div class="b"><button class="b1">Hyd: &#128222; 1800 4120 1937</button></div>
                 <div class="c"><button class="c1">Pune: &#128222; 9951666671</button></div>
                 <div class="d"><button class="d1">Bengaluru: &#128222; 9951666672</button></div>
-            </nav>
+            </div>
+        </nav>
             <nav class="main1">
                 
-                <div><img src="b.webp" class="logo"></div>
+                <div><img src="images/b.webp" class="logo"></div>
                 <div><a class="home">Home</a></div>
                 <div class="dropdown">
                     <a class="course">Courses &#9662;</a>
@@ -721,13 +784,13 @@
                 <input type="radio" name="slider" id="slide7">
     
                 <div class="slides" style="margin-bottom: 0px;">
-                    <div class="slideimg"><img src="a.png" alt="Image1"></div>
-                    <div class="slideimg"><img src="c.png" alt="Image3"></div>
-                    <div class="slideimg"><img src="d.png" alt="Image4"></div>
-                    <div class="slideimg"><img src="e.png" alt="Image5"></div>
-                    <div class="slideimg"><img src="f.png" alt="Image6"></div>
-                    <div class="slideimg"><img src="g.png" alt="Image7"></div>
-                    <div class="slideimg"><img src="h.png" alt="Image8"></div>
+                    <div class="slideimg"><img src="images/a.png" alt="Image1"></div>
+                    <div class="slideimg"><img src="images/c.png" alt="Image3"></div>
+                    <div class="slideimg"><img src="images/d.png" alt="Image4"></div>
+                    <div class="slideimg"><img src="images/e.png" alt="Image5"></div>
+                    <div class="slideimg"><img src="images/f.png" alt="Image6"></div>
+                    <div class="slideimg"><img src="images/g.png" alt="Image7"></div>
+                    <div class="slideimg"><img src="images/h.png" alt="Image8"></div>
                 </div>
     
                 <div class="nav-buttons">
@@ -741,26 +804,28 @@
                 </div>
             </div>
         </header>
+        
             <header>
                 <div class="contentimg">
                     <div class="content" style="margin-top: 0px;">
-                        <h1 class="train" style="font-weight: bolder;font-size: xx-large;">We just don't train, </h1>
+                        <h1 class="train" style="font-weight: bolder;font-size: xx-large;"><br>We just don't train, </h1>
                         <h1 style="font-weight: bolder;font-size: xx-large;">We transform the careers</h1>
                         <p><super class="black">Innomatics Research Labs</super> is a pioneer in <super class="black"> "Transforming Careers and Lives"</super> of individuals in the Digital Space by catering training on <super class="red"> NASSCOM Future skills prime Certified Data Science</super> <super class="black">, Python , Predictive Analytics Modeler , Machine Learning , Aritificial Intelligence (AI) , Generative AI</super><super> Full-stack web development</super><super> and Career Launching program</super> for students who are willing to showcase their skills in the competitive job market with valuable credentials , and also can complete courses with a certificate.</p>
                         <h3><super class="red">NASSCOM Futureskills Prime Registered Business Partner</super></h3>
                         <p>As an authorized <super class="black">NASSCOM FutureSkills Prime Training Partner</super> dedicated to providing practical and real-world learning experiences. Our training includes case studies and business challenges to ensure job-ready skills. We also organize regular<super class="black"> hackathons,workshops,</super> and <super class="black">meetups</super> to enhance learning and productivity. With a dedicated placement team, we partner with over <super class="black">100 companies</super> to match them with skilled professionals, helping businesses grow while shaping successful careers.</p>
                         <p class="red"> Best Edtech company</p>
                         <p>Recognized by <super class="black">Times of India </super> as the Best Training Institute in Hyderabad for Data Science & Digital Marketing, we have trained and placed <super class="black"> 10,000+ </super> students. With <super class="black">350+ </super> batches,<super  class="black">70+ </super> hackathons , <super class="black"> 500+ </super> industry experts, <super class="black"> 500+ </super> webinars, and <super class="black"> 500+ </super> hiring partners , we focus on practical learning and skill development through advanced classrooms and modern training methods.</p>
+                        <br><button>View more</button>
                     </div>
                     <div class="imgcontent">
-                        <h1 class="wwa" style="font-weight: bold;font-size:xx-large;">What we are?</h1>
+                        <h1 class="wwa" style="font-weight: bold;font-size:xx-large;margin-top: 0px;">What we are?</h1>
                         <div class="top">
-                            <div class="t1"><img src="laptop.png" class="symbol" style="width: 50%;display:flex;align-items: center;justify-content: center;"><p class="symhead">Global Leaders in training</p></div>
-                            <div class="t2"><img src="lap.jpg" class="symbol" style="width: 30%;"><p class="symhead">Practical oriented approach</p></div>
+                            <div class="t1"><img src="images/laptop.png" class="symbol" style="width: 50%;display:flex;align-items: center;justify-content: center;"><p class="symhead">Global Leaders in training</p></div>
+                            <div class="t2"><img src="images/lap.jpg" class="symbol" style="width: 30%;"><p class="symhead">Practical oriented approach</p></div>
                         </div>
                         <div class="bottom">
-                            <div class="t3"><img src="sui.png" class="symbol"><p class="symhead">Hands-on projects & Internship</p></div>
-                            <div class="t2"><img src="ba.png" class="symbol"><p class="symhead">100% placement Assistance</p></div>
+                            <div class="t3"><img src="images/sui.png" class="symbol"><p class="symhead">Hands-on projects & Internship</p></div>
+                            <div class="t2"><img src="images/ba.png" class="symbol"><p class="symhead">100% placement Assistance</p></div>
                         </div>
                     </div>
                 </div>
@@ -771,7 +836,8 @@
             <br>
             <div class="bblackdiv">
             <div class="bb1">
-                <img src="1 (1).png" style="border-radius: 20px;" class="bimage">
+
+                <img src="images/1 (1).png" style="border-radius: 20px;" class="bimage">
                 <h1 style="color: white;">NASSCOM Futureskills Prime Certified Data Science</h1>
                 <p style="color: white;">This is a great choice for tech geeks, students, working professionals and aspiring data scientists who want to upskill and build a better foundation is the stream of Data Science.</p>
                 <button class="bbutton" style="color: white;">Read More</button>
@@ -779,13 +845,13 @@
 
             </div>
             <div class="bb2">
-                <img src="1 (2).png" style="border-radius: 20px;" class="bimage">
+                <img src="images/1 (2).png" style="border-radius: 20px;" class="bimage">
                 <h1 style="color: white;">Full Stack Development</h1>
                 <p style="color: white;">Learn the right skills to break into a development career & advance yourself as a full-stack Developer. It includes Frontend, Backend, databases, debugging & testing.</p>
                 <button class="bbutton" style="color: white;">Read More</button>
             </div>
             <div class="bb3">
-                <img src="1 (3).png" style="border-radius: 20px;" class="bimage">
+                <img src="images/1 (3).png" style="border-radius: 20px; " class="bimage">
                 <h1 style="color: white;">Generative AI</h1>
                 <p style="color: white;">Generative AI Course at Innomatics is perfect for students, job seekers, entrepreneurs, and professionals who want to learn the latest AI tools and skills to grow in their careers.</p>
                 <button  class="bbutton" style="color: white;">Read More</button>
@@ -849,7 +915,7 @@
                 <DIV class="small">
                     
                     <div>
-                        <img src="image.webp" style="width: 250px; padding: 20px;">
+                        <img src="images/image.webp" style="width: 250px; padding: 20px;">
 
                     </div>
                     <div>
@@ -875,6 +941,7 @@
             <div id="review1" class="review">
             <p>
                 <h1>Sindhuja</h1>
+                <h2>⭐️⭐️⭐️⭐️⭐️</h2>
                 I am incredibly grateful to my institute for the invaluable support they provided in my job search journey. The guidance and resources they offered were instrumental in helping me secure a job. I want to express my special thanks to our HR executive, Sai Kiran Rodda, whose assistance was pivotal. His dedication and expertise made the entire process seamless, enabling me to transition smoothly into my new role. I highly recommend this institute to anyone seeking not only quality education but also excellent career support. Thank you for making a significant difference in my life!
 
 
@@ -882,13 +949,23 @@
             
             </div>
             <div id="review2" class="review">
-                <h1>Rahul</h1>
-                <p>This institute helped me land my dream job...</p>
+                <h1>Vamshi Raj</h1>
+                <h2>⭐️⭐️⭐️⭐️⭐️</h2>
+                <p>Innomatics Research Labs is the Best platform to transform our career, here I have done a Data analytics course, and was recently placed in a company.
+                    Here they provides Excellent quality education and practice or doubt Sessions. and conducts so many Hackathons to enhance our skills. I personally like the LMS facility which is lifetime. Here we can see all our class recordings throughout the course.
+                    Faculty and staff are so friendly. They will guide us until we get placed.
+                    
+                    </p>
             </div>
 
             <div id="review3" class="review">
-                <h1>Aditi</h1>
-                <p>The career support here is amazing...</p>
+                <h1>Pramodha</h1>
+                <h2>⭐️⭐️⭐️⭐️⭐️</h2>
+                <p>
+                    
+                    I am incredibly grateful to my institute for the invaluable support they provided in my job search journey. The guidance and resources they offered were instrumental in helping me secure a job. I want to express my special thanks to our HR executive, Sai Kiran Rodda, whose assistance was pivotal. His dedication and expertise made the entire process seamless, enabling me to transition smoothly into my new role. I highly recommend this institute to anyone seeking not only quality education but also excellent career support. Thank you for making a significant difference in my life!
+                    
+                    </p>
             </div>
             <div class="nav-buttons">
                 <a href="#review1">1</a>
@@ -909,14 +986,14 @@
             <h1 class="stories">Here Are Some Success Stories</h1><br><br>
             <div class="container">
             <div class="people">
-            <img src="a2.png" style="border: black 2px solid;">
-            <img src="a3.png" style="border: black 2px solid;">
-            <img src="a4.png" style="border: black 2px solid;">
-            <img src="a5.png" style="border: black 2px solid;">
-            <img src="a6.png" style="border: black 2px solid;">
-            <img src="a7.png" style="border: black 2px solid;">
-            <img src="a8.png" style="border: black 2px solid;">
-            <img src="a9.png" style="border: black 2px solid;">
+            <img src="images/a2.png" style="border: black 2px solid;">
+            <img src="images/a3.png" style="border: black 2px solid;">
+            <img src="images/a4.png" style="border: black 2px solid;">
+            <img src="images/a5.png" style="border: black 2px solid;">
+            <img src="images/a6.png" style="border: black 2px solid;">
+            <img src="images/a7.png" style="border: black 2px solid;">
+            <img src="images/a8.png" style="border: black 2px solid;">
+            <img src="images/a9.png" style="border: black 2px solid;">
             </div>
             <br>
             <hr>
@@ -929,17 +1006,17 @@
             <h1 class="blog">Read Latest Business News & Blog updates</h1>
             <div class="news">
             <div class="news1">
-                <img src="n1.png" style="align-items: center;justify-content: center;">
+                <img src="images/n1.png" style="align-items: center;justify-content: center;">
                 <h3 style="padding: 10px;">OOPS Concepts in Python: Part 1</h3>
                 <p style="padding: 10px;">Class , Objects , Constructor , Methods in Python....</p>
             </div>
             <div class="news2">
-                <img src="n2.png" style="align-items: center;justify-content: center;">
+                <img src="images/n2.png" style="align-items: center;justify-content: center;">
                 <h3 style="padding: 10px;text-wrap: wrap;">Real-World Applications of Data Science <br> in Today's Fast-paced Environment</h3>
                 <p style="padding: 10px;">Data Scienceis a field that has emerged as an... </p>
             </div>
             <div class="news3">
-                <img src="n3.png" style="align-items: center;justify-content: center;">
+                <img src="images/n3.png" style="align-items: center;justify-content: center;">
                 <h3 style="padding: 10px;">Why should you join Innomatics?</h3>
                 <p style="padding: 10px;">At Innomatics we believe in looking at the...</p>
             </div>
@@ -948,22 +1025,22 @@
         </footer>
         <div class="endmain">
             <div class="end">
-                <img class="image" src="white.webp">
+                <img class="image" src="images/white.webp">
                 <p>A leading training institute, <super class="irl">Innomatics Research Labs</super> offers courses in areas such as NASSCOM Futureskills Prime Certified <super class="purple">Data Science</super>, Python, AI, Data Analytics, <super class="purple">Full Stack Development</super>, and <super class="purple">Generative AI</super>. Our practical training is designed meticulously to meet industry needs and provide valuable certification upon completion, empowering individuals to excel in their careers.</p>
                 <a href="https://www.linkedin.com/in/your-profile" target="_blank">
-                    <img src="linkedin.png" alt="LinkedIn" width="30">
+                    <img src="images/linkedin.png" alt="LinkedIn" width="30">
                 </a>
                 <a href="https://www.linkedin.com/in/your-profile" target="_blank">
-                    <img src="facebook1.png" alt="FaceBook" width="30">
+                    <img src="images/facebook1.png" alt="FaceBook" width="30">
                 </a>
                 <a href="https://www.linkedin.com/in/your-profile" target="_blank">
-                    <img src="insta.webp" alt="FaceBook" width="30">
+                    <img src="images/insta.webp" alt="FaceBook" width="30">
                 </a>
                 <a href="https://www.linkedin.com/in/your-profile" target="_blank">
-                    <img src="twit.png" alt="FaceBook" width="30">
+                    <img src="images/twit.png" alt="FaceBook" width="30">
                 </a>
                 <a href="https://www.linkedin.com/in/your-profile" target="_blank">
-                    <img src="yt.png" alt="FaceBook" width="30">
+                    <img src="images/yt.png" alt="FaceBook" width="30">
                 </a>
             </div>
             <div class="end1">
