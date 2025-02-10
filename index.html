@@ -705,6 +705,100 @@
             .if{
                 border-radius: 40px;
             }
+            /* Mobile Styles */
+            @media (max-width: 768px) {
+                .main {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                .main1 {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+                .logo {
+                    width: 100%;
+                    margin-left: 0;
+                }
+                .home, .course, .it, .internship, .about, .event {
+                    margin-left: 0;
+                    margin-top: 10px;
+                }
+                .pay {
+                    margin-left: 0;
+                    margin-top: 10px;
+                }
+                .contentimg {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .imgcontent {
+                width: 100%;
+                margin: 20px 0;
+            }
+            .t1, .t2, .t3 {
+                width: 100%;
+                margin: 10px 0;
+            }
+            .bblackdiv {
+                flex-direction: column;
+                align-items: center;
+            }
+            .bb1, .bb2, .bb3 {
+                width: 90%;
+                margin: 10px 0;
+            }
+            .review-c {
+                width: 90%;
+            }
+            .nav-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .main {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .main1 {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .contentimg {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .imgcontent {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .t1, .t2, .t3 {
+                width: 45%;
+            }
+            .bb1, .bb2, .bb3 {
+                width: 30%;
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1025px) {
+            .main {
+                height: 70px;
+            }
+            .main1 {
+                padding: 20px;
+            }
+            .content {
+                max-width: 50%;
+            }
+            .imgcontent {
+                max-width: 100%;
+            }
+            .bb1, .bb2, .bb3 {
+                width: 30%;
+            }
+        }
         </style>
     </head>
     <body>
@@ -970,6 +1064,8 @@
             <div class="nav-buttons">
                 <a href="#review1">1</a>
                 <a href="#review2">2</a>
+
+                
                 <a href="#review3">3</a>
             </div>
 
